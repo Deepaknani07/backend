@@ -4,9 +4,8 @@ from datetime import datetime
 db = SQLAlchemy()
 
 
-# -----------------------------
 # ADMIN TABLE
-# -----------------------------
+
 class Admin(db.Model):
     __tablename__ = 'admins'
 
@@ -19,9 +18,9 @@ class Admin(db.Model):
     reset_tokens = db.relationship('PasswordResetToken', backref='admin', lazy=True, cascade='all, delete-orphan')
 
 
-# -----------------------------
+
 # OPPORTUNITY TABLE
-# -----------------------------
+
 class Opportunity(db.Model):
     __tablename__ = 'opportunities'
 
@@ -40,9 +39,8 @@ class Opportunity(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 
-# -----------------------------
 # PASSWORD RESET TOKEN TABLE
-# -----------------------------
+
 class PasswordResetToken(db.Model):
     __tablename__ = 'password_reset_tokens'
 

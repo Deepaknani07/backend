@@ -9,7 +9,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from config import Config
 from models import db, Admin, Opportunity, PasswordResetToken
 
-# ── App setup ──────────────────────────────────────────────────────────────────
+
 app = Flask(__name__)
 app.config.from_object(Config)
 
@@ -20,7 +20,6 @@ with app.app_context():
     db.create_all()
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
 def is_valid_email(email: str) -> bool:
     return bool(re.match(r'^[^@\s]+@[^@\s]+\.[^@\s]+$', email))
 
@@ -51,15 +50,15 @@ VALID_CATEGORIES = {
 }
 
 
-# ── Health check ───────────────────────────────────────────────────────────────
+# Health check 
 @app.route('/')
 def home():
     return jsonify({'message': 'Backend running'}), 200
 
 
-# ══════════════════════════════════════════════════════════════════════════════
+
 #  TASK 1 — Auth
-# ══════════════════════════════════════════════════════════════════════════════
+
 
 # US-1.1  Sign Up
 @app.route('/signup', methods=['POST'])
